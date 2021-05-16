@@ -1,4 +1,7 @@
-Translate two seprate locations into a journey
-Retrieve the long and lat for each destination
-Use Uber API to get a price estimation
-Use a bus API to get a price estimation
+- Translate two seprate locations into a journey
+- Retrieve the long and lat for each destination
+- Integrate Uber API and test
+    - Use Uber API to get a price estimation
+- Decide which bus API to use, integrate and test
+    - Use a bus API to get a price estimation
+- Parse results (if need be), compare and return result
