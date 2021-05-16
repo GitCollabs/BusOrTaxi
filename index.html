@@ -1,18 +1,18 @@
-<!doctype html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+    <script src="./js/scripts.js"></script>
+  </head>
+  <body>
+    <div id="map"></div>
 
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-
-  <title>Bus or Taxi</title>
-  <meta name="description" content="The HTML5 Herald">
-  <meta name="author" content="SitePoint">
-
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
-
-</head>
-
-<body>
-  <script src="js/scripts.js"></script>
-</body>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBczXN8ZbeLaa34IRLDcI0rajiAkxf27Bw&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
+  </body>
 </html>
