@@ -15,23 +15,49 @@ function initMap() {
         content: "Click the map to get Lat/Lng!",
         position: myLatlng,
     });
-
     infoWindowOne.open(map);
+
+    let infoWindowTwo;
+
+    let windowSelector = 2;
 
     // Configure the click listener.
     map.addListener("click", (mapsMouseEvent) => {
 
-        // Close the current InfoWindow.
-        infoWindowOne.close();
+        if (windowSelector % 2 === 0) {
 
-        // Create a new InfoWindow.
-        infoWindowOne = setWindowProperties(mapsMouseEvent);
+            // Close InfoWindowOne and Two.
+            infoWindowOne.close();
+            if(windowSelector !== 2) {
+                infoWindowTwo.close();
+            }
 
-        // Console logger
-        consoleLogger(mapsMouseEvent);
+            // Create a new InfoWindowOne.
+            infoWindowOne = setWindowProperties(mapsMouseEvent);
+
+            // Console logger
+            consoleLogger(mapsMouseEvent);
+            
+            // Open infoWindowOne
+            infoWindowOne.open(map);
+            
+            windowSelector++;
         
-        // Open window
-        infoWindowOne.open(map);
+        }
+        else {
+            
+            // Create a new InfoWindowTwo.
+            infoWindowTwo = setWindowProperties(mapsMouseEvent);
+
+            // Console logger
+            consoleLogger(mapsMouseEvent);
+                        
+            // Open infoWindowTwo
+            infoWindowTwo.open(map);
+                        
+            windowSelector = 4;
+
+        }
 
     });
 }
