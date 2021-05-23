@@ -11,8 +11,6 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById("map"), options);
 
-    var starter;
-
     let infoWindowOne = new google.maps.InfoWindow({
         content: "Click the map to get Lat/Lng!",
         position: myLatlng,
@@ -22,18 +20,34 @@ function initMap() {
 
     // Configure the click listener.
     map.addListener("click", (mapsMouseEvent) => {
+
         // Close the current InfoWindow.
         infoWindowOne.close();
+
         // Create a new InfoWindow.
-        infoWindowOne = new google.maps.InfoWindow({
-            position: mapsMouseEvent.latLng
-        });
-        infoWindowOne.setContent(
-            JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-        );
-        starter = mapsMouseEvent.latLng.toJSON()
-        console.log(starter.lat, starter.lng);
+        infoWindowOne = setWindowProperties(mapsMouseEvent);
+
+        // Console logger
+        consoleLogger(mapsMouseEvent);
+        
+        // Open window
         infoWindowOne.open(map);
-        i++;
+
     });
+}
+
+function setWindowProperties(mouseEvent) {
+
+    let infoWindow = new google.maps.InfoWindow({
+        position: mouseEvent.latLng
+    });
+    infoWindow.setContent(
+        JSON.stringify(mouseEvent.latLng.toJSON(), null, 2)
+    );
+    return infoWindow;
+
+}
+
+function consoleLogger(mouseEvent) {
+    console.log(mouseEvent.latLng.toJSON().lat, mouseEvent.latLng.toJSON().lng);
 }
